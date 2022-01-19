@@ -7,5 +7,7 @@ defmodule CrossCommerceDesafioWeb.Router do
 
   scope "/api", CrossCommerceDesafioWeb do
     pipe_through :api
+
+    get "/numbers", NumberController, :sorted_numbers
   end
 end
