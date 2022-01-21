@@ -1,19 +1,51 @@
-# CrossCommerceDesafio
+# Cross Commerce Challenge
 
-To start your Phoenix server:
+## 🚦 Pré Requisitos
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- [Docker](https://www.docker.com/products/docker-desktop)
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Para executar o projeto
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Clone o projeto em sua pasta local
 
-## Learn more
+```bash
+git clone https://github.com/mateus-sartori/cross_commerce_desafio
+```
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Após isso temos o ambiente `backend`
+
+Para subir os containers em `backend(Phoenix)`:
+
+## 🎲 Rodando o servidor
+
+É necessário estar dentro da basta backend e rodar os seguintes comandos:
+
+```bash
+# Rode o comando build, para executar todos os requerimentos e configurações
+docker-compose build
+```
+
+```bash
+# Para levantar o container
+docker-compose up
+```
+
+```bash
+# Entre na bash do container api, e instale as libs
+docker-compose exec api bash
+
+# Dentro da bash do api
+mix deps.get && mix ecto.setup
+
+# Você pode compilar as libs separadamente basta rodar o comando
+mix ou mix deps.compile 
+
+# É preciso rodar o comando de migrations em seguida para criar as tabelas
+mix phx.server ou iex -S mix phx.server
+
+# Assim uma rota local será aberta em 
+localhost:4000
+
+# Você poderá consultar a seguinte rota para o teste
+localhost:4000/api/numbers
+```
